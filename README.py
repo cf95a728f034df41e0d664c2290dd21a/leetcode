@@ -19,7 +19,7 @@ def markdown():
 
     problems = session.get(url=url_problems).json()
 
-    yield '# LeetCode Online Judge, [{}]({})'.format(problems['category_slug'].capitalize(), url_algorithms)
+    yield '# LeetCode Online Judge of [{}]({})'.format(problems['category_slug'].capitalize(), url_algorithms)
 
     yield '\n'
     yield 'Solved with Python 3.x'
@@ -30,9 +30,11 @@ def markdown():
         'Accepted', 'Submitted', 'Acceptance', 'Protected', 'Solved'
     ]
 
-    yield '## Table of Contents ({})'.format(datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
+    yield '### Table of Contents'
+    yield datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+    yield '\n'
     yield '| {} |'.format(' | '.join(header))
-    yield '| {} |'.format(' | '.join(['-' * len(item) for item in header]))
+    yield '| {} |'.format('|'.join(['-' * (len(item) + 2) for item in header]))
 
     for problem in sorted(problems['stat_status_pairs'], key=lambda x: x['stat']['question_id']):
         py = '{}.{}.py'.format(

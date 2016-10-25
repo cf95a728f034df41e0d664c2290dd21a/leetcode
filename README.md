@@ -1,13 +1,16 @@
-# LeetCode Online Judge, [Algorithms](https://leetcode.com/problemset/algorithms/)
+# LeetCode Online Judge of [Algorithms](https://leetcode.com/problemset/algorithms/)
 
 
 Solved with Python 3.x
 
 
 
-## Table of Contents (2016-10-26 01:00:07.247971)
+### Table of Contents
+2016-10-26 01:07:59.239296
+
+
 | # | Title | Problem | Discuss | Solution | Difficulty | Accepted | Submitted | Acceptance | Protected | Solved |
-| - | ----- | ------- | ------- | -------- | ---------- | -------- | --------- | ---------- | --------- | ------ |
+| ---|-------|---------|---------|----------|------------|----------|-----------|------------|-----------|-------- |
 | 1 | Two Sum | [LeetCode](https://leetcode.com/problems/two-sum/) | [LeetCode](https://leetcode.com/discuss/questions/oj/two-sum/) | [Python](/1.two_sum.py) | Easy | 335209 | 1198276 | 28.0% | False | True |
 | 2 | Add Two Numbers | [LeetCode](https://leetcode.com/problems/add-two-numbers/) | [LeetCode](https://leetcode.com/discuss/questions/oj/add-two-numbers/) | [Python](/2.add_two_numbers.py) | Medium | 200449 | 786151 | 25.5% | False | True |
 | 3 | Longest Substring Without Repeating Characters | [LeetCode](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | [LeetCode](https://leetcode.com/discuss/questions/oj/longest-substring-without-repeating-characters/) | [Python](/3.longest_substring_without_repeating_characters.py) | Medium | 205538 | 879419 | 23.4% | False | True |

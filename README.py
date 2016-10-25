@@ -25,10 +25,7 @@ def markdown():
     yield 'Solved with Python 3.x'
     yield '\n' * 2
 
-    header = [
-        '#', 'Title', 'Problem', 'Discuss', 'Solution', 'Difficulty',
-        'Accepted', 'Submitted', 'Acceptance', 'Protected', 'Solved'
-    ]
+    header = ['#', 'Title', 'Solution', 'Difficulty', 'Acceptance', 'Protected', 'Solved']
 
     yield '### Table of Contents'
     yield datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
@@ -44,14 +41,18 @@ def markdown():
         yield '| {} |'.format(
             ' | '.join([
                 str(problem['stat']['question_id']),
-                problem['stat']['question__title'],
-                '[LeetCode]({}/problems/{}/)'.format(host, problem['stat']['question__title_slug']),
-                '[LeetCode]({}/discuss/questions/oj/{}/)'.format(host, problem['stat']['question__title_slug']),
-                '[Python](/{})'.format(py),
+                '[{}]({})'.format(
+                    problem['stat']['question__title'],
+                    '{}/problems/{}/'.format(host, problem['stat']['question__title_slug'])
+                ),
+                "[Python](/{})<span style='margin: 0 10px 0 10px;'></span>[Discuss]({})".format(
+                    py, '{}/discuss/questions/oj/{}/'.format(host, problem['stat']['question__title_slug'])
+                ),
                 {1: 'Easy', 2: 'Medium', 3: 'Hard'}[problem['difficulty']['level']],
-                str(problem['stat']['total_acs']),
-                str(problem['stat']['total_submitted']),
-                '%.1f%%' % (100 * problem['stat']['total_acs'] / problem['stat']['total_submitted']),
+                '%.1f%% (%d of %d)' % (
+                    100 * problem['stat']['total_acs'] / problem['stat']['total_submitted'],
+                    problem['stat']['total_acs'], problem['stat']['total_submitted']
+                ),
                 str(problem['paid_only']),
                 str(os.path.exists(py) and os.path.isfile(py))
             ])

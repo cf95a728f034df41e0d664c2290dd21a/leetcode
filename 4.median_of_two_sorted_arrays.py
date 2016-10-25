@@ -49,6 +49,7 @@ class Solution(object):
         :param nums2: list[int]
         :return: float
         """
+
         len_a, len_b = len(nums1), len(nums2)
         total = len_a + len_b
 

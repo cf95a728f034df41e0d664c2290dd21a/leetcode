@@ -25,7 +25,7 @@ def markdown():
     yield 'Solved with Python 3.x'
     yield '\n' * 2
 
-    header = ['#', 'Title', 'Solution', 'Difficulty', 'Acceptance', 'Protected', 'Solved']
+    header = ['#', 'Title', 'Solution', 'Discuss', 'Difficulty', 'Acceptance', 'Protected', 'Solved']
 
     yield '### Table of Contents'
     yield datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
@@ -45,11 +45,12 @@ def markdown():
                     problem['stat']['question__title'],
                     '{}/problems/{}/'.format(host, problem['stat']['question__title_slug'])
                 ),
-                "[Python](/{})<span style='margin: 0 10px 0 10px;'></span>[Discuss]({})".format(
-                    py, '{}/discuss/questions/oj/{}/'.format(host, problem['stat']['question__title_slug'])
+                "[Python](/{})".format(py),
+                '[LeetCode]({})'.format(
+                    '{}/discuss/questions/oj/{}/'.format(host, problem['stat']['question__title_slug'])
                 ),
                 {1: 'Easy', 2: 'Medium', 3: 'Hard'}[problem['difficulty']['level']],
-                '%.1f%% (%d of %d)' % (
+                '%.1f%% = %d / %d' % (
                     100 * problem['stat']['total_acs'] / problem['stat']['total_submitted'],
                     problem['stat']['total_acs'], problem['stat']['total_submitted']
                 ),

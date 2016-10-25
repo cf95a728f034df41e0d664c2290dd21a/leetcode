@@ -43,6 +43,24 @@ class Solution(object):
         else:
             return (self._kth(nums1, nums2, _len // 2 - 1) + self._kth(nums1, nums2, _len // 2)) / 2.0
 
+    def b(self, nums1, nums2):
+        """
+        :param nums1: list[int]
+        :param nums2: list[int]
+        :return: float
+        """
+        len_a, len_b = len(nums1), len(nums2)
+        total = len_a + len_b
+
+        if total & 0x01:
+            return self._binary_search(nums1, len_a, nums2, len_b, total // 2 + 1)
+        else:
+
+            return float(
+                self._binary_search(nums1, len_a, nums2, len_b, total // 2) +
+                self._binary_search(nums1, len_a, nums2, len_b, total // 2 + 1)
+            ) / 2
+
     def _kth(self, nums1, nums2, k):
         """
         :param nums1: list[int]
@@ -74,6 +92,35 @@ class Solution(object):
                 return self._kth(nums1[:index1], nums2, k)
             else:
                 return self._kth(nums1, nums2[:index2], k)
+
+    def _binary_search(self, nums1, len_a, nums2, len_b, target):
+        """
+        :param nums1: list[int]
+        :param len_a: int
+        :param nums2: list[int]
+        :param len_b: int
+        :param target: int
+        :return: float
+        """
+
+        if len_a > len_b:
+            return self._binary_search(nums2, len_b, nums1, len_a, target)
+
+        if len_a == 0:
+            return nums2[target - 1]
+
+        if target == 1:
+            return min(nums1[0], nums2[0])
+
+        _len_a = min(target // 2, len_a)
+        _len_b = target - _len_a
+
+        if nums1[_len_a - 1] > nums2[_len_b - 1]:
+            return self._binary_search(nums1, len_a, nums2[_len_b:], len_b - _len_b, target - _len_b)
+        elif nums1[_len_a - 1] < nums2[_len_b - 1]:
+            return self._binary_search(nums1[_len_a:], len_a - _len_a, nums2, len_b, target - _len_a)
+        else:
+            return nums1[_len_a - 1]
 
 
 if __name__ == '__main__':
